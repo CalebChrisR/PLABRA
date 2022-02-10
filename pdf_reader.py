@@ -12,6 +12,9 @@ PALABRA di awe24.com
 Esun di awe24 ta usa e reglanan di Aruba, Papiamento
 
 Mi kier a traha un pa Korsou (y Boneiru), den Papiamentu
+
+pdf_reader.py ta kompila tur palabra ku 5 leter for di
+buki di oro ("oro.pdf"). si nomber di e pdf aki kambia, e no lo traha
 '''
 
 import PyPDF2
