@@ -65,7 +65,7 @@ def oro_filter(list):
 
 
 def list_to_file(list):
-    f = open("accepted_words.txt", "w", encoding='utf-8')
+    f = open("lista_di_sinku.txt", "w", encoding='utf-8')
 
     for l in tqdm(list, desc="Writing words to file"):
         f.write(l + "\n")
