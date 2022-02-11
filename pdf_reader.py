@@ -3,6 +3,8 @@
 Proyekto di @CalebChrisR
 
 Nomber dor di @ChekeCur
+
+Ayudi di @curasolenjo
 ~
 Inspira dor di:
 WORDLE
