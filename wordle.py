@@ -11,16 +11,13 @@ board = [
 def main():
 
     game_over = False
-    num_lines = sum(1 for line in open('lista_di_sinku.txt',"r", encoding="UTF-8"))
-    word_id = random.randint(0, num_lines)
-    f = open("lista_di_sinku.txt", "r", encoding="UTF-8")
-    content = f.readlines()
-    word = content[word_id - 1]
-    print(word)
+    answer = word_pick()
+    print(answer)
     time.sleep(1)
 
     while game_over == False:
         init_board()
+        test(answer)
         time.sleep(1)
         game_over = True
 
@@ -37,12 +34,29 @@ def init_board():
     print()
     #print("|{}||{}||{}||{}||{}||{}|".format(" ", " ", " ", " ", " ", " "))
 
-def test():
-    word = "papel"
-    gameover = False
+def word_pick():
+    num_lines = sum(1 for line in open('lista_di_sinku.txt',"r", encoding="UTF-8"))
+    word_id = random.randint(0, num_lines)
+    f = open("lista_di_sinku.txt", "r", encoding="UTF-8")
+    content = f.readlines()
+    word = content[word_id - 1]
+    word = word[0:5]
+    f.close()
+    return word
 
+def letter_counter(word):
     let_count = {}
-    #TODO count letters for words with repeating letters
+    for l in word:
+        if l in let_count:
+            let_count[l] += 1
+        elif l not in let_count:
+            let_count[l] = 1
+    return let_count
+
+def test(word):
+    
+    gameover = False
+    let_count = letter_counter(word)  
 
     while gameover == False:
         guess = str(input("What word?: "))
@@ -61,12 +75,14 @@ def test():
             print("\nCorrect!")
             gameover = True
             break
+        elif guess == "exit()":
+            gameover = True
+            break
         print()           
 
 
 
 if __name__ == "__main__":
     txt_res()
-    #main()	
-    test()
+    main()	
     txt_res()
