@@ -1,3 +1,5 @@
+from os import get_terminal_size
+
 def usage(argc, argv):
     if argc == 1:
         # too little words
@@ -11,3 +13,8 @@ def usage(argc, argv):
             return 3
     else:
         return 0
+
+def printc(text):
+    size = get_terminal_size()
+    size = size[0]
+    print(text.center(size))
