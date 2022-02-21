@@ -3,7 +3,7 @@ from os import get_terminal_size
 def usage(argc, argv):
     if argc == 1:
         # too little words
-        return 1
+        return 0
     elif argc > 2:
         # too many words
         return 2

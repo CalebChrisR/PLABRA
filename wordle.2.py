@@ -1,11 +1,12 @@
 # main.py
 from imports import usage, printc
-import sys, os, time
+import sys, os, time, random
 
 YL = "\033[1;33;40m"
 GR = "\033[1;32;40m"
 WH = "\033[0;37;40m"
 
+# Method to check if board is empty
 class BoardMethods:
         def __init__(self, board):
             self.board = board
@@ -15,6 +16,7 @@ class BoardMethods:
             return state
 
 def main():
+    # take word from cmd as the answer
     argv = sys.argv
     argc = len(argv)
 
@@ -43,6 +45,7 @@ def game_init(board):
     printc("=-==-==-==-==-==-=")
     if m_board.state() == True:
         for w in board:
+            # TODO colored word output
             printc(w)
     
 def game(answer):
@@ -50,14 +53,17 @@ def game(answer):
     global board 
     board = []
 
+    # set board, check correct user input, add to board if good
     for i in range(6):
         game_init(board)
-        word = word_input(i)
+        word = word_input()
         board.append(word)
+
+        # correct answer in 6 turns will end game
         if word == answer:
             game_init(board)
             i += 1
-            if 1 == 1:
+            if i == 1:
                 printc(f"Congrats!, guessed in {i} round")
             else:
                 printc(f"Congrats!, guessed in {i} rounds")
@@ -66,7 +72,7 @@ def game(answer):
         game_init(board)
         printc(f"Tough Luck, Word was: {word}")
 
-def word_input(i):
+def word_input():
     while True:
         word = input(f"".ljust(os.get_terminal_size()[0]//2 -2))
         
@@ -92,6 +98,16 @@ def word_input(i):
             
 
         return word
+
+def word_pick():
+    num_lines = sum(1 for line in open('lista_di_sinku.txt',"r", encoding="UTF-8"))
+    word_id = random.randint(0, num_lines)
+    f = open("lista_di_sinku.txt", "r", encoding="UTF-8")
+    content = f.readlines()
+    word = content[word_id - 1]
+    word = word[0:5]
+    f.close()
+    return word
 
 if __name__ == "__main__":
     main()
