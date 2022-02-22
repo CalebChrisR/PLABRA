@@ -3,7 +3,7 @@ from os import get_terminal_size
 def usage(argc, argv):
     if argc == 1:
         # too little words
-        return 0
+        return 1
     elif argc > 2:
         # too many words
         return 2
@@ -14,7 +14,8 @@ def usage(argc, argv):
     else:
         return 0
 
-def printc(text):
+def printc(text, tend="\n"):
+    endarg = tend
     size = get_terminal_size()
     size = size[0]
-    print(text.center(size))
+    print(text.center(size),end=tend)

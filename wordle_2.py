@@ -45,8 +45,9 @@ def game_init(board):
     printc("=-==-==-==-==-==-=")
     if m_board.state() == True:
         for w in board:
-            # TODO colored word output
             printc(w)
+            # TODO colored word output
+            #word_out(w)
     
 def game(answer):
     word = answer
@@ -70,7 +71,7 @@ def game(answer):
             break            
     else:
         game_init(board)
-        printc(f"Tough Luck, Word was: {word}")
+        printc(f"Tough Luck, Word was: {answer}")
 
 def word_input():
     while True:
@@ -109,5 +110,40 @@ def word_pick():
     f.close()
     return word
 
+def word_out(word):
+    let_count = let_counter(word)
+    
+    pass
+
+def let_counter(word):
+    let_count = {}
+    for l in word:
+        if l in let_count:
+            let_count[l] += 1
+        elif l not in let_count:
+            let_count[l] = 1
+    return let_count
+
+def answer_check(guess, word, counter):
+    for x in guess:
+        index = guess.find(x)
+        if x not in word:
+            print(f"{x}",end="")
+        if counter[x] > 0:
+            counter[x] -= 1
+
+
+
+
+def main2():
+    let_count = let_counter('karni')
+    guess = 'karni'
+    word = 'abeha'
+    answer_check(guess, word, let_count)
+
+
+
+
 if __name__ == "__main__":
     main()
+    #main2()
