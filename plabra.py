@@ -59,10 +59,13 @@ def game(answer):
                 printc(f"Congrats!, guessed in {i} round")
             else:
                 printc(f"Congrats!, guessed in {i} rounds")
+            
+            time.sleep(2)
             break            
     else:
         display_board(board, answer)
         printc(f"Tough Luck, Word was: {answer}")
+        time.sleep(2)
 
 def display_board(board, answer):
     # clear terminal and make text white
