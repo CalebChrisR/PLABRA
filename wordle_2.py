@@ -1,19 +1,7 @@
 # main.py
-from imports import usage, printc
+from imports import usage, printc, YL, GR, WH, BoardMethods
 import sys, os, time, random
 
-YL = "\033[1;33;40m"
-GR = "\033[1;32;40m"
-WH = "\033[0;37;40m"
-
-# Method to check if board is empty
-class BoardMethods:
-        def __init__(self, board):
-            self.board = board
-        
-        def state(self):
-            state = bool(self.board)
-            return state
 
 def main():
     # take word from cmd as the answer
