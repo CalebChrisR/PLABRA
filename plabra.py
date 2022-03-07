@@ -29,6 +29,19 @@ def main():
     
     game(answer)
 
+    while True:
+        printc("Play again?[Y/n]")
+        replay = input("")
+        if replay == "Y":
+            main()
+        elif replay == "n":
+            printc("Goodbye!")
+            time.sleep(2)
+            exit()
+        else:
+            continue 
+
+
 
 def word_picker():
     f = open("lista_di_sinku.txt", "r", encoding="UTF-8")
@@ -59,13 +72,10 @@ def game(answer):
                 printc(f"Congrats!, guessed in {i} round")
             else:
                 printc(f"Congrats!, guessed in {i} rounds")
-            
-            time.sleep(2)
             break            
     else:
         display_board(board, answer)
         printc(f"Tough Luck, Word was: {answer}")
-        time.sleep(2)
 
 def display_board(board, answer):
     # clear terminal and make text white
